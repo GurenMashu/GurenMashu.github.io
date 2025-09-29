@@ -1,0 +1,547 @@
+/*
+    CSS Reset and Global Styles
+*/
+:root {
+    --color-dark-navy: #1C2031; /* Primary dark background */
+    --color-dark: #2A3043;      /* Secondary dark background/sections */
+    --color-light-blue: #5AC2CE; /* Teal/Blue section color */
+    --color-purple: #9A7BC7;    /* Purple accent color */
+    --color-coral: #E37471;     /* Coral/Red section color */
+    --color-light-green: #59AE8B; /* Green accent color */
+    --color-text-light: #F4F4F4; /* Light text color */
+    --color-text-dark: #222;    /* Dark text color */
+    --color-accent: #E37471;    /* General accent/button color */
+    --font-main: 'Helvetica Neue', Arial, sans-serif;
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    background: var(--color-dark-navy);
+    color: var(--color-text-light);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-text-light);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* --- Utility Classes --- */
+.section {
+    padding: 60px 0;
+    min-height: 400px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.bg-dark-navy { background: var(--color-dark-navy); }
+.bg-dark { background: var(--color-dark); }
+.bg-light-blue { background: var(--color-light-blue); color: var(--color-text-dark); }
+.bg-coral { background: var(--color-coral); }
+.bg-light-green { background: var(--color-light-green); color: var(--color-text-dark); }
+.bg-purple { background: var(--color-purple); }
+
+.text-light { color: var(--color-text-light); }
+.text-center { text-align: center; }
+
+/* --- Buttons --- */
+.btn-primary {
+    display: inline-block;
+    background: transparent;
+    color: var(--color-text-light);
+    border: 2px solid var(--color-text-light);
+    padding: 12px 25px;
+    margin-top: 20px;
+    transition: background var(--transition-speed), color var(--transition-speed);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    cursor: pointer;
+}
+
+
+/*
+    1. Navigation Bar
+*/
+#navbar {
+    background: var(--color-dark-navy);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar .logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-light);
+    letter-spacing: 2px;
+}
+
+#navbar .nav-links {
+    display: flex;
+}
+
+#navbar .nav-links li a {
+    padding: 10px 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color var(--transition-speed);
+}
+
+#navbar .nav-links li a:hover {
+    color: var(--color-accent);
+}
+
+.menu-toggle {
+    display: none; /* Hide on desktop */
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/*
+    2. Header/Showcase
+*/
+#showcase {
+    background: var(--color-dark-navy);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* You would add a background image here in a real project */
+    /* background: url('placeholder-image.jpg') no-repeat center center/cover; */
+}
+
+.showcase-content {
+    padding: 40px 0;
+}
+
+.showcase-content .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-accent);
+}
+
+.showcase-content .main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+/*
+    3. About Me Section
+*/
+.about-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 40px;
+    align-items: center;
+    text-align: left;
+}
+
+.about-text {
+    padding-right: 20px;
+}
+
+.about-text .summary-paragraph {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.about-text .education {
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.about-image .image-placeholder {
+    height: 350px;
+    width: 100%;
+    /* Inspired by the background image on the right of the 'About Me' block */
+    /* background-image: url('placeholder-photo.jpg'); */
+    background-size: cover;
+    background-position: center;
+}
+
+.social-links a {
+    font-size: 1.8rem;
+    margin-right: 15px;
+    color: var(--color-text-dark);
+    transition: color var(--transition-speed);
+}
+
+.social-links a:hover {
+    color: var(--color-coral);
+}
+
+/*
+    4. Skills Section
+*/
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding-top: 20px;
+}
+
+.skill-category {
+    background: var(--color-dark-navy);
+    padding: 25px;
+    border-radius: 5px;
+    border-top: 4px solid var(--color-accent);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skill-category h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--color-accent);
+}
+
+.skill-category h3 i {
+    margin-right: 10px;
+}
+
+.skill-category ul li {
+    padding: 5px 0;
+    margin-left: 20px;
+    list-style: disc;
+    color: var(--color-text-light);
+}
+
+/*
+    5. Experience Section (Timeline inspired)
+*/
+.timeline-item {
+    display: flex;
+    padding: 20px 0;
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+    border-left: none; /* End the line after the last item */
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 25px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 3px solid var(--color-dark);
+    z-index: 1;
+}
+
+.timeline-date {
+    flex: 0 0 200px;
+    padding-right: 40px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--color-text-light);
+}
+
+.timeline-content {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: var(--color-text-light);
+}
+
+.timeline-content .company {
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.timeline-content ul li {
+    padding: 5px 0;
+    margin-left: 20px;
+    list-style: disc;
+}
+
+/*
+    6. Projects Section
+*/
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--color-text-light);
+    color: var(--color-text-dark);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card h3 {
+    color: var(--color-dark-navy);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.project-card .date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.project-card ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+.project-card ul li {
+    list-style: disc;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--color-coral);
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.project-link:hover {
+    color: var(--color-dark-navy);
+}
+
+/*
+    7. Contact Section (Inspired by the dark contact block)
+*/
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 40px 0;
+}
+
+.contact-form-area h2, .contact-info-area h2 {
+    font-size: 1.8rem;
+    border-bottom: 3px solid var(--color-accent);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--color-dark);
+    background: var(--color-dark);
+    color: var(--color-text-light);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.form-group-inline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-submit {
+    background: var(--color-accent);
+    color: var(--color-text-light);
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: opacity var(--transition-speed);
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+}
+
+.btn-clear {
+    background: transparent;
+    color: var(--color-text-light);
+    border: 1px solid var(--color-text-light);
+    padding: 12px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background var(--transition-speed);
+}
+.btn-clear:hover {
+    background: var(--color-text-light);
+    color: var(--color-dark-navy);
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.contact-info-item i {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin-right: 20px;
+    width: 30px;
+    text-align: center;
+}
+
+.contact-info-item p.label {
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 3px;
+}
+
+.contact-info-item a {
+    color: var(--color-text-light);
+    transition: color var(--transition-speed);
+}
+
+.contact-info-item a:hover {
+    color: var(--color-accent);
+}
+
+/*
+    8. Footer
+*/
+#footer {
+    padding: 20px 0;
+    background: var(--color-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+#footer p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/*
+    9. Media Queries (Responsiveness)
+*/
+@media (max-width: 900px) {
+    /* About and Contact Grids Stack */
+    .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-image {
+        display: none; /* Hide image for simplicity on smaller screens */
+    }
+
+    /* Navigation Stack */
+    #navbar .nav-links {
+        display: none; /* Hidden by default for mobile */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        left: 0;
+        background: var(--color-dark-navy);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    #navbar .nav-links.active {
+        display: flex;
+    }
+    #navbar .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+    }
+    .menu-toggle {
+        display: block; /* Show menu toggle on mobile */
+    }
+
+    /* Showcase Text Smaller */
+    .showcase-content .main-title {
+        font-size: 2.2rem;
+    }
+
+    /* Timeline Adjustments */
+    .timeline-item {
+        flex-direction: column;
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        margin-bottom: 20px;
+        padding-left: 0;
+    }
+    .timeline-item::before {
+        display: none;
+    }
+    .timeline-date {
+        text-align: left;
+        padding-right: 0;
+        margin-bottom: 10px;
+        color: var(--color-accent);
+    }
+    .timeline-content {
+        padding-left: 0;
+    }
+
+    /* Contact Form Adjustments */
+    .form-group-inline {
+        grid-template-columns: 1fr;
+    }
+}
