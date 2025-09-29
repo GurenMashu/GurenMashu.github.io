@@ -141,18 +141,41 @@ ul {
     2. Header/Showcase
 */
 #showcase {
-    background: var(--color-dark-navy);
+    background: var(--color-dark-navy); /* Base dark color in case image fails to load */
     min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* You would add a background image here in a real project */
-    /* background: url('placeholder-image.jpg') no-repeat center center/cover; */
+    position: relative; /* Needed for overlay */
+    overflow: hidden; /* Ensures nothing spills out */
+
+    /* --- BACKGROUND IMAGE STYLES --- */
+    background-image: url('header-bg.jpg'); /* Replace with your image path or URL */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    /* -------------------------------- */
+}
+
+/* --- New: Blue Tint Overlay --- */
+#showcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* This creates the blue tint by overlaying a semi-transparent blue color */
+    background-color: rgba(90, 194, 206, 0.6); /* Using --color-light-blue with 60% opacity */
+    z-index: 1; /* Make sure the overlay is above the image but below content */
 }
 
 .showcase-content {
     padding: 40px 0;
+    position: relative; /* Brings content above the overlay */
+    z-index: 2; /* Content should be on top of the overlay */
+    color: var(--color-text-light); /* Ensure text is visible over the overlay */
 }
 
 .showcase-content .subtitle {
@@ -160,7 +183,7 @@ ul {
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--color-accent);
+    color: var(--color-text-light); /* Changed to light for better contrast on image */
 }
 
 .showcase-content .main-title {
@@ -169,6 +192,21 @@ ul {
     line-height: 1.2;
     max-width: 800px;
     margin: 0 auto 20px;
+    color: var(--color-text-light); /* Ensure title is visible */
+}
+
+/* Ensure the button is also on top and visible */
+.btn-primary {
+    position: relative;
+    z-index: 2;
+    border-color: var(--color-text-light); /* Keep light border for contrast */
+    color: var(--color-text-light);
+}
+
+.btn-primary:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-text-light); /* Ensure text stays light */
 }
 
 /*
