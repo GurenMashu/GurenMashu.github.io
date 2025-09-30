@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
-    // 1. Mobile Menu Toggle
+    const navbar = document.getElementById('navbar');
+    
+    // Mobile Menu Toggle
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
-
-    // 2. Close menu when a link is clicked (for single-page navigation)
+    
+    // Close menu when a link is clicked
     const links = document.querySelectorAll('.nav-links a');
     links.forEach(link => {
         link.addEventListener('click', () => {
@@ -16,14 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // 3. Optional: Add a class to the navbar on scroll for a subtle effect
+    
+    // Navbar background change on scroll
     window.addEventListener('scroll', () => {
-        const navbar = document.getElementById('navbar');
         if (window.scrollY > 50) {
-            navbar.style.backgroundColor = 'rgba(28, 32, 49, 0.95)'; // Slightly transparent dark
+            navbar.style.backgroundColor = 'rgba(28, 32, 49, 0.95)';
+            navbar.style.backdropFilter = 'blur(10px)';
         } else {
             navbar.style.backgroundColor = 'var(--color-dark-navy)';
+            navbar.style.backdropFilter = 'none';
         }
     });
 });
