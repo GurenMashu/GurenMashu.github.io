@@ -539,6 +539,34 @@ ul {
     color: var(--color-dark-navy);
 }
 
+/* Resume Button Styles */
+.btn-resume, .contact-resume {
+    display: inline-block;
+    background: linear-gradient(180deg, var(--color-dark-navy), var(--color-dark));
+    color: var(--color-text-light);
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(12, 16, 28, 0.6);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+.btn-resume i, .contact-resume i {
+    margin-left: 8px;
+}
+
+.btn-resume:hover, .contact-resume:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(12, 16, 28, 0.65);
+    opacity: 0.98;
+}
+
+.contact-resume {
+    padding: 10px 18px;
+    margin-top: 8px;
+}
+
 .contact-info-item {
     display: flex;
     align-items: flex-start;
