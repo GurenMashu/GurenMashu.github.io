@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    const navLinks = document.getElementById('nav-links');
     const navbar = document.getElementById('navbar');
 
     // Mobile Menu Toggle (guard against missing elements)
     if (menuToggle && navLinks) {
+        // Toggle menu and reflect state in aria-expanded
         menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            const isActive = navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', String(!!isActive));
         });
 
         // Close menu when a link is clicked
@@ -15,8 +17,26 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
                 }
             });
+        });
+
+        // Close menu on window resize to avoid stuck open on orientation change
+        window.addEventListener('resize', () => {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close menu when clicking outside (mobile)
+        document.addEventListener('click', (e) => {
+            const target = e.target;
+            if (!navLinks.contains(target) && !menuToggle.contains(target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
         });
     }
 
